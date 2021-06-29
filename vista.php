@@ -155,7 +155,7 @@ function query2($db_connection, $tabla, $array)
                             echo "<th scope='col'>" . $row['femenino'] . "</th>";
                             echo "<th scope='col'>" . $row['masculino'] . "</th>";
                             echo "<th scope='col'>" . $row['otros'] . "</th>";
-                            echo "<th id='" . $row['id'] . "' scope='col'> " . $row['descargas'] . " </th>";
+                            echo "<th scope='col'> <div id='" . $row['id'] . "d'>" . $row['descargas'] . "</div> </th>";
                             echo "<th scope='col'><a href='" . $row['url_doc'] . "'><input class='btn btn-primary' type='button' value='Descargar' onclick='setdowload(" . $row['id'] . ")'></a></th>";
                             echo "</tr>";
                         }
@@ -179,7 +179,13 @@ function query2($db_connection, $tabla, $array)
     -->
     <script>
         function setdowload(id) {
-
+            let ids = id + "d";
+            let html = document.getElementById(ids);
+            let number = html.innerText;
+            let suma = parseInt(number, 10) + 1;
+            html.innerHTML = suma + " ";
+            console.log(suma);
+            // document.getElementById(id).innerHTML = plus+"";
             $.ajax({
                 url: "aumentar.php",
                 type: "post",
@@ -191,6 +197,8 @@ function query2($db_connection, $tabla, $array)
                     console.log(response);
                 }
             });
+
+
         }
     </script>
 </body>
