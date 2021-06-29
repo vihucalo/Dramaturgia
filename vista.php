@@ -185,7 +185,7 @@ function query2($db_connection, $tabla, $array)
             let suma = parseInt(number, 10) + 1;
             html.innerHTML = suma + " ";
             console.log(suma);
-            // document.getElementById(id).innerHTML = plus+"";
+            
             $.ajax({
                 url: "aumentar.php",
                 type: "post",
